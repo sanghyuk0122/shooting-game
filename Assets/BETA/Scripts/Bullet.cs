@@ -7,18 +7,17 @@ namespace BETA7
         [UnityEngine.SerializeField]
         private Vector3 destination;
         [UnityEngine.SerializeField]
-        private bool isThrow = false;
+        private bool isThrow;
         public float speed = 1.0f;
-        public Vector3 dir;
-<<<<<<< HEAD
         public bool isPlayer = true;
-=======
-        public  bool isPlayer = true;
->>>>>>> fb19c6133933e8cf1008067af713358ba6e6ebc4
+
+        public GameObject Item;
+
+        public Vector3 dir;
 
         void Start()
         {
-
+        
         }
 
         // Update is called once per frame
@@ -32,21 +31,17 @@ namespace BETA7
             destination = _destination;
             dir = destination - this.transform.position;
         }
+
         void OnTriggerEnter(Collider other)
         {
             if (isPlayer)
             {
                 if (other.CompareTag("Enemy"))
                 {
+                    Instantiate(Item, this.transform.position, Item.transform.rotation);
                     Destroy(other.gameObject);
-<<<<<<< HEAD
                     Destroy(gameObject);
-
-                    Instantiate.
-=======
-                    Destroy(this.gameObject);
                     return;
->>>>>>> fb19c6133933e8cf1008067af713358ba6e6ebc4
                 }
             }
             else
@@ -54,27 +49,9 @@ namespace BETA7
                 if (other.CompareTag("Player"))
                 {
                     Destroy(other.gameObject);
-<<<<<<< HEAD
                     Destroy(gameObject);
                 }
             }
-
-=======
-                    Destroy(this.gameObject);
-                }
-            }
-            if (other.CompareTag("Player"))
-            {
-                Destroy(other.gameObject);
-                Destroy(this.gameObject);
-                return;
-            }
-            if (other.CompareTag("Enemy"))
-            {
-                Destroy(other.gameObject);
-                Destroy(this.gameObject);
-            }
->>>>>>> fb19c6133933e8cf1008067af713358ba6e6ebc4
         }
     }
 }

@@ -56,7 +56,7 @@ namespace BETA7
             if (other.CompareTag("Enemy"))
             {
                 Destroy(other.gameObject);
-                Destroy(this.gameObject);
+                Destroy(gameObject);
             }
         }
     }
