@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 namespace BETA7
 {
@@ -7,6 +8,8 @@ namespace BETA7
     {
         public GameObject MenuBack;
         public GameObject Setting;
+        public GameObject SettingBGSound;
+        public GameObject SettingSound;
         // Start is called once before the first execution of Update after the MonoBehaviour is created
         void Start()
         {
@@ -30,6 +33,37 @@ namespace BETA7
         public void BtnExit()
         {
             Application.Quit();
+        }
+        public void BtnBack()
+        {
+            Setting.GetComponent<Animator>().SetTrigger("Close");
+            Invoke("OpenMenuBG", 1.5f);
+        }
+        public void OpenMenuBG()
+        {
+            MenuBack.GetComponent<Animator>().SetTrigger("Open");
+        }
+        public void BtnBGsound()
+        {
+            if (SettingBGSound.GetComponent<Text>().text == "¹è°æ ³ë·¡ ÄÑÁü") 
+            {
+                SettingBGSound.GetComponent<Text>().text = "¹è°æ ³ë·¡ ²¨Áü";
+            }
+            else
+            {
+                SettingBGSound.GetComponent<Text>().text = "¹è°æ ³ë·¡ ÄÑÁü";
+            }
+        }
+        public void BtnSound()
+        {
+            if (SettingSound.GetComponent<Text>().text == "¼Ò¸® È¿°ú ÄÑÁü")
+            {
+                SettingSound.GetComponent<Text>().text = "¼Ò¸® È¿°ú ²¨Áü";
+            }
+            else
+            {
+                SettingSound.GetComponent<Text>().text = "¼Ò¸® È¿°ú ÄÑÁü";
+            }
         }
         void OpenSetting()
         {
