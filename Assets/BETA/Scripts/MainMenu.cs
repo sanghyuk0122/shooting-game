@@ -13,7 +13,7 @@ namespace BETA7
         // Start is called once before the first execution of Update after the MonoBehaviour is created
         void Start()
         {
-        
+            SetData();
         }
 
         // Update is called once per frame
@@ -48,21 +48,46 @@ namespace BETA7
             if (SettingBGSound.GetComponent<Text>().text == "¹è°æ ³ë·¡ ÄÑÁü") 
             {
                 SettingBGSound.GetComponent<Text>().text = "¹è°æ ³ë·¡ ²¨Áü";
+                GameDataManager.instance.isMusic = 0;
             }
             else
             {
                 SettingBGSound.GetComponent<Text>().text = "¹è°æ ³ë·¡ ÄÑÁü";
+                GameDataManager.instance.isMusic = 1;
             }
+            GameDataManager.instance.SaveData();
         }
         public void BtnSound()
         {
             if (SettingSound.GetComponent<Text>().text == "¼Ò¸® È¿°ú ÄÑÁü")
             {
                 SettingSound.GetComponent<Text>().text = "¼Ò¸® È¿°ú ²¨Áü";
+                GameDataManager.instance.isSound = 0;
             }
             else
             {
                 SettingSound.GetComponent<Text>().text = "¼Ò¸® È¿°ú ÄÑÁü";
+                GameDataManager.instance.isSound = 1;
+            }
+            GameDataManager.instance.SaveData();
+        }
+        public void SetData()
+        {
+            if(GameDataManager.instance.isMusic == 1)
+            {
+                SettingBGSound.GetComponent<Text>().text = "¹è°æ ³ë·¡ ÄÑÁü";
+            }
+            else if (GameDataManager.instance.isMusic == 0)
+            {
+                SettingBGSound.GetComponent<Text>().text = "¹è°æ ³ë·¡ ²¨Áü";
+            }
+            if(GameDataManager.instance.isSound == 1)
+            {
+                SettingSound.GetComponent<Text>().text = "¼Ò¸® È¿°ú ÄÑÁü";
+            }
+            else if (GameDataManager.instance.isSound == 0)
+            {
+                SettingSound.GetComponent<Text>().text = "¼Ò¸® È¿°ú ²¨Áü";
             }
         }
         void OpenSetting()

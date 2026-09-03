@@ -1518,6 +1518,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 650f6d886b68dc842b4c6796e79892ba, type: 3}
   m_Name: 
   m_EditorClassIdentifier: BETA7::BETA7.GameDataManager
+  instance: {fileID: 0}
   isMusic: 0
   isSound: 0
   gameTime: 0
