@@ -11,6 +11,9 @@ namespace BETA7
         public float speed = 2.0f;
         public GameObject objBullet;
         public Transform BulletPoint;
+        public float Hp;
+        public int Upgrade;
+        public int Bomb;
 
         void Start()
         {

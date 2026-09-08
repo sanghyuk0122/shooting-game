@@ -1,9 +1,11 @@
+using Codice.Client.Common;
 using Codice.CM.Common.Tree;
 using NUnit.Framework;
 using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting.YamlDotNet.Core;
 using UnityEngine;
+using UnityEngine.UI;
 
 namespace BETA7
 {
@@ -14,6 +16,10 @@ namespace BETA7
         public int enemyCount;
         public float spawnWait;
         public float startWait;
+
+        public Text Hp;
+        public Text Upgrade;
+        public Text Bomb;
 
         public List<GameObject> listEnemys = new List<GameObject>();
 
@@ -30,6 +36,16 @@ namespace BETA7
         {
             gameStatus = GameStatus.play;
             StartCoroutine(SpawnEnemy());
+
+            Player player = GameObject.Find("Player").GetComponent<Player>();
+            player.Hp = GameDataManager.instance.maxHP;
+            player.Upgrade = GameDataManager.instance.upgrade;
+            player.Bomb = GameDataManager.instance.bomb;
+
+            Hp.text = "HP : " + player.Hp;
+            Upgrade.text = "Upgrade : " + player.Upgrade;
+            Bomb.text = "Bomb : " + player.Bomb;
+
         }
 
         IEnumerator SpawnEnemy()

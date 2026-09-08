@@ -55,6 +55,7 @@ namespace BETA7
                 SettingBGSound.GetComponent<Text>().text = "배경 노래 켜짐";
                 GameDataManager.instance.isMusic = 1;
             }
+            Debug.Log(GameDataManager.instance.isMusic);
             GameDataManager.instance.SaveData();
         }
         public void BtnSound()
@@ -73,7 +74,7 @@ namespace BETA7
         }
         public void SetData()
         {
-            if(GameDataManager.instance.isMusic == 1)
+            if (GameDataManager.instance.isMusic == 1)
             {
                 SettingBGSound.GetComponent<Text>().text = "배경 노래 켜짐";
             }

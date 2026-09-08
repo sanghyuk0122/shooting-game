@@ -11,10 +11,18 @@ namespace BETA7
         public int gameScore = 0;
         public string curld;
 
+        // 플레이어에 대한 정보
+        public float maxHP = 5f;
+        public int upgrade = 0;
+        public int maxUpgrade = 3;
+        public int bomb = 0;
+        public int maxbScore = 0;
+
         private void Awake()
         {
             instance = this;
             DontDestroyOnLoad(instance);
+            LoadData();
         }
 
         public void SaveData()
@@ -22,7 +30,6 @@ namespace BETA7
             if(PlayerPrefs.HasKey("id"))
             {
                 string id = PlayerPrefs.GetString("id");
-                Debug.Log(id);
             }
             else
             {
@@ -30,6 +37,9 @@ namespace BETA7
             }
             PlayerPrefs.SetInt("Music", isMusic);
             PlayerPrefs.SetInt("Sound", isSound);
+            PlayerPrefs.SetInt("Score", gameScore);
+            string saveData = curld + "," + gameScore;
+            PlayerPrefs.SetString("saveData", saveData);
         }
         public void LoadData()
         {
@@ -44,13 +54,20 @@ namespace BETA7
             isMusic = PlayerPrefs.GetInt("Music");
             isSound = PlayerPrefs.GetInt("Sound");
 
-            Debug.Log(isMusic);
-            Debug.Log(isSound);
+            if (!PlayerPrefs.HasKey("Score"))
+            {
+                PlayerPrefs.SetInt("Score", gameScore);
+            }
+            gameScore = PlayerPrefs.GetInt("Score");
+            if (!PlayerPrefs.HasKey("saveData"))
+            {
+                string saveData = curld + "," + gameScore;
+                PlayerPrefs.SetString("saveData", saveData);
+            }
         }
         // Start is called once before the first execution of Update after the MonoBehaviour is created
         void Start()
         {
-            LoadData();
         }
 
         // Update is called once per frame
