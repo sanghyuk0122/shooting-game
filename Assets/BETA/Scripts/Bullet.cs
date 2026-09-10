@@ -1,9 +1,12 @@
 using UnityEngine;
+using UnityEngine.SocialPlatforms.Impl;
 
 namespace BETA7
 {
     public class Bullet : MonoBehaviour
     {
+
+
         [UnityEngine.SerializeField]
         private Vector3 destination;
         [UnityEngine.SerializeField]
@@ -41,6 +44,10 @@ namespace BETA7
                     Instantiate(Item, this.transform.position, Item.transform.rotation);
                     Destroy(other.gameObject);
                     Destroy(gameObject);
+                    Player player = GameObject.Find("Player").GetComponent<Player>();
+                    player.Score += 10;
+                    GameManager gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
+                    gameManager.Score.text = "Score : " + player.Score;
                     return;
                 }
             }
@@ -48,8 +55,15 @@ namespace BETA7
             {
                 if (other.CompareTag("Player"))
                 {
-                    Destroy(other.gameObject);
+                    Player player = GameObject.Find("Player").GetComponent<Player>();
+                    player.Hp -= 1;
+                    GameManager gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
+                    gameManager.Hp.text = "Hp : " + player.Hp;
                     Destroy(gameObject);
+                    if (player.Hp <= 0)
+                    {
+                        Destroy(other.gameObject);
+                    }
                 }
             }
         }

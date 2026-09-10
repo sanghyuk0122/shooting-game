@@ -19,6 +19,7 @@ namespace BETA7
 
         public Text Hp;
         public Text Upgrade;
+        public Text Score;
         public Text Bomb;
 
         public List<GameObject> listEnemys = new List<GameObject>();
@@ -41,10 +42,12 @@ namespace BETA7
             player.Hp = GameDataManager.instance.maxHP;
             player.Upgrade = GameDataManager.instance.upgrade;
             player.Bomb = GameDataManager.instance.bomb;
+            player.Score = GameDataManager.instance.gameScore;
 
             Hp.text = "HP : " + player.Hp;
             Upgrade.text = "Upgrade : " + player.Upgrade;
             Bomb.text = "Bomb : " + player.Bomb;
+            Score.text = "Score : " + player.Score;
 
         }
 

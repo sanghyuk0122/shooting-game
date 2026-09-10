@@ -1,3 +1,4 @@
+using BETA7;
 using UnityEngine;
 
 namespace BETA7
@@ -14,6 +15,8 @@ namespace BETA7
         public float Hp;
         public int Upgrade;
         public int Bomb;
+        public int Score;
+        public bool isItem = true;
 
         void Start()
         {
@@ -59,7 +62,25 @@ namespace BETA7
             if (other.CompareTag("Enemy"))
             {
                 Destroy(other.gameObject);
-                Destroy(gameObject);
+                Player player = GameObject.Find("Player").GetComponent<Player>();
+                player.Hp -= 1;
+                GameManager gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
+                gameManager.Hp.text = "Hp : " + player.Hp;
+            }
+            if (isItem)
+            {
+                if (other.CompareTag("Item"))
+                {
+                    Player player = GameObject.Find("Player").GetComponent<Player>();
+                    player.Hp += 1;
+                    GameManager gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
+                    gameManager.Hp.text = "Hp : " + player.Hp;
+
+                    player.Upgrade += 1;
+                    gameManager.Upgrade.text = "Upgrade : " + player.Upgrade;
+                    Destroy(other.gameObject);
+                    return;
+                }
             }
         }
     }

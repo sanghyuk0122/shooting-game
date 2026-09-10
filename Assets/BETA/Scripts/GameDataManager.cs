@@ -12,7 +12,7 @@ namespace BETA7
         public string curld;
 
         // 플레이어에 대한 정보
-        public float maxHP = 5f;
+        public float maxHP = 10f;
         public int upgrade = 0;
         public int maxUpgrade = 3;
         public int bomb = 0;
