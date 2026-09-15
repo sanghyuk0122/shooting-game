@@ -1,6 +1,3 @@
-using Codice.Client.Common;
-using Codice.CM.Common.Tree;
-using NUnit.Framework;
 using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting.YamlDotNet.Core;
@@ -21,6 +18,12 @@ namespace BETA7
         public Text Upgrade;
         public Text Score;
         public Text Bomb;
+
+        public float bossTime;
+        public Boss bossScript;
+        public GameObject Boss;
+        public bool isBoss = false;
+        public float gameTime;
 
         public List<GameObject> listEnemys = new List<GameObject>();
 
@@ -66,11 +69,25 @@ namespace BETA7
                 }                
             }
         }
+        void BossInit()
+        {
+            Vector3 spawnPosition = new Vector3(Random.Range(-spawnValue.x, spawnValue.x), spawnValue.y, 5);
+            Instantiate(Boss, spawnPosition, Boss.transform.rotation);
+        }
 
         // Update is called once per frame
         void Update()
         {
-        
+            if (!isBoss)
+            {
+                if (gameTime > bossTime)
+                {
+                    StopAllCoroutines();
+                    Invoke("BossInit", 2.0f);
+                    isBoss = true;
+                }
+            }
+            gameTime += Time.deltaTime;
         }
     }
 }

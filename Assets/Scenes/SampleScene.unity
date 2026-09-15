@@ -224,6 +224,7 @@ MonoBehaviour:
   Upgrade: 0
   Bomb: 0
   Score: 0
+  isItem: 1
 --- !u!1 &404952844
 GameObject:
   m_ObjectHideFlags: 0
@@ -1070,6 +1071,11 @@ MonoBehaviour:
   Upgrade: {fileID: 1987152953}
   Score: {fileID: 1626959251}
   Bomb: {fileID: 620331956}
+  bossTime: 1
+  bossScript: {fileID: 7550542402558127172, guid: 21def7fd04209bd4290dcb5b67c35574, type: 3}
+  Boss: {fileID: 6658498061167266097, guid: 21def7fd04209bd4290dcb5b67c35574, type: 3}
+  isBoss: 0
+  gameTime: 0
   listEnemys: []
   gameStatus: 0
 --- !u!4 &1659328042
