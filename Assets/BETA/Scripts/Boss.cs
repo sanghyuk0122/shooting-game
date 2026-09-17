@@ -7,33 +7,14 @@ namespace BETA7
         GameManager gameManager;
         public GameObject objBullet;
         public GameObject BulletPoint;
-        Player player;
+        
+        public Player player;
 
+        public float Hp;
         public float bossMissileTime;
         public float bossTempTime;
 
-        void BossFireBullet(int num)
-        {
-            switch (num)
-            {
-                case 0:
-                    {
-                        GameObject bullet = Instantiate(objBullet, BulletPoint.transform.position, this.transform.rotation);
-                        bullet.GetComponent<Bullet>().SetBullet(player.transform.position);
-                    }
-                    break;
-                case 1:
-                    {
-                        for (int i = 0; i < 3; i++)
-                        {
-                            GameObject bullet = Instantiate(objBullet, BulletPoint.transform.position, this.transform.rotation);
-                            bullet.GetComponent<Bullet>().SetBullet(player.transform.position + Vector3.forward + new Vector3(-1 + i, 0, 0));
-                        }
-                    }
-                    break;
-            }
-        }
-        void Start()
+        private void Awake()
         {
             GameObject gameManagerObject = GameObject.FindGameObjectWithTag("GameManager");
             if (gameManagerObject != null)
@@ -44,10 +25,43 @@ namespace BETA7
             {
                 Debug.Log("게임 매니저가 존재하지 않습니다.");
             }
+
             player = GameObject.FindGameObjectWithTag("Player").GetComponent<Player>();
             if (player == null)
             {
                 Debug.LogError("플레이어가 존재하지 않습니다.");
+            }
+        }
+
+        void Start()
+        {
+            
+        }
+
+        void BossFireBullet(int num)
+        {
+            switch (num)
+            {
+                case 0:
+                    {
+                        GameObject bullet = Instantiate(objBullet, BulletPoint.transform.position, this.transform.rotation);
+                        Bullet bulletScript = bullet.GetComponent<Bullet>();
+                        bullet.GetComponent<Bullet>().isPlayer = false;
+                        bullet.GetComponent<Bullet>().SetBullet(player.transform.position);
+                    }
+                    break;
+                case 1:
+                    {
+                        for (int i = 0; i < 3; i++)
+                        {
+                            GameObject bullet = Instantiate(objBullet, BulletPoint.transform.position, this.transform.rotation);
+                            Bullet bulletScript = bullet.GetComponent<Bullet>();
+                            bullet.GetComponent<Bullet>().isPlayer = false;
+                            bullet.GetComponent<Bullet>().SetBullet(player.transform.position + Vector3.forward + new Vector3(-1 + i, 0, 0));
+
+                        }
+                    }
+                    break;
             }
         }
 

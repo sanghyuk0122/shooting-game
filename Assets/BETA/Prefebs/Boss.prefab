@@ -44,9 +44,10 @@ GameObject:
   - component: {fileID: 1390535474807706173}
   - component: {fileID: 7963461339514768595}
   - component: {fileID: 1589399001211255550}
+  - component: {fileID: 670205445260203073}
   m_Layer: 0
   m_Name: Boss
-  m_TagString: Untagged
+  m_TagString: Boss
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -139,7 +140,7 @@ CapsuleCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 2
@@ -161,5 +162,34 @@ MonoBehaviour:
   m_EditorClassIdentifier: BETA7::BETA7.Boss
   objBullet: {fileID: 5055351219432594539, guid: 008231731a4b3e8468a9dd0ff37756ef, type: 3}
   BulletPoint: {fileID: 636086062068326970}
+  player: {fileID: 0}
+  Hp: 25
   bossMissileTime: 2
   bossTempTime: 0
+--- !u!54 &670205445260203073
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6658498061167266097}
+  serializedVersion: 5
+  m_Mass: 1
+  m_LinearDamping: 0
+  m_AngularDamping: 0.05
+  m_CenterOfMass: {x: 0, y: 0, z: 0}
+  m_InertiaTensor: {x: 1, y: 1, z: 1}
+  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ImplicitCom: 1
+  m_ImplicitTensor: 1
+  m_UseGravity: 0
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0

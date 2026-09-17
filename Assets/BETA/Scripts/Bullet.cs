@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.SocialPlatforms.Impl;
 
 namespace BETA7
@@ -48,6 +49,20 @@ namespace BETA7
                     player.Score += 10;
                     GameManager gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
                     gameManager.Score.text = "Score : " + player.Score;
+                    return;
+                }
+                if (other.CompareTag("Boss"))
+                {
+                    Debug.Log("우두머리 치다");
+                    Destroy(gameObject);
+                    Boss boss = GameObject.FindGameObjectWithTag("Boss").GetComponent<Boss>();
+                    boss.Hp -= 1;
+                    if (boss.Hp <= 0)
+                    {
+                        Debug.Log("우두머리 쓰러지다!");
+                        Destroy(other.gameObject);
+                        SceneManager.LoadScene("Win");
+                    }
                     return;
                 }
             }
